@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>xhEditor : AngularJS Demo</title>
+<link rel="stylesheet" href="common.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="../xheditor.js"></script>
+<script type="text/javascript" src="../xheditor_lang/zh-cn.js"></script>
+
+<script type="text/javascript" src="../bower_components/angularjs/angular.min.js"></script>
+<script type="text/javascript" src="../angular.xheditor.js"></script>
+<script>
+	var app = angular.module('myApp', ['angular.xheditor'])
+	.controller('xheditorController', ['$scope', function($scope){
+		$scope.editor_config = {
+			height: '350' // 初始编辑器高度
+		};
+	}]);
+</script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="xheditorController">
+		<h1>Demo:</h1>
+		<div style="text-align:center;">
+			<textarea class="form-control" style="width: 90%;" ng-model="html" config="editor_config" xheditor></textarea>
+		</div>
+		<p>Result:</p>
+		{{html}}
+		<button type="button" ng-click="html='test'">修改内容</button>
+
+		<h1>多个编辑器：</h1>
+		<textarea class="form-control" style="width: 90%;" ng-model="html_second" xheditor></textarea>
+		<p>Result:</p>
+		{{html_second}}
+	</div>
+</body>
+</html>
